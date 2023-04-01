@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+
+
+  header {
+    width: 100vw;
+    height: 124px;
+    display: flex;
+    align-items: center;
+
+    img {
+      padding-right: 10px;
+    }
+  }
+
+  main {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 110px;
+
+    h1 {
+      padding-bottom: 14px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #999595;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 76px;
+
+      label {
+        color: #676464;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .singInInput {
+        width: 330px;
+        height: 42px;
+        margin-bottom: 20px;
+        color: rgba(80, 77, 77, 0.6);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #999595;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      button {
+        width: 330px;
+        height: 42px;
+        background-color: #075985;
+        color: #FFFF;
+        border: none;
+        border-style: none;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 40px;
+      }
+
+      .regiterContainer {
+        margin-left: 95px;
+
+        .register {
+          margin-top: 18px;
+          font-size: 0.875rem;
+
+          a {
+            color: #075985;
+            cursor: pointer;
+          }
+        }
+      }
+
+    }
+
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+}
