@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { passwordValidator } from 'src/app/validators/passwordValidator';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,10 +19,10 @@ export class SignUpComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-      comfirm: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required, passwordValidator]),
+      comfirm: new FormControl(null, [Validators.required, passwordValidator]),
     });
   }
 
