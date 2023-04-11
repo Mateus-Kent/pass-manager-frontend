@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environments';
+import { registerAndUpdateCredentialDTO } from '../DTOs/registerAndUpdateCredentialDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,8 @@ export class CredentialService {
     this.url = `${environment.url}/credentials`;
   }
 
-  register(params: object) {
-    return this.http.post(`${this.url}/create`, params).pipe(
+  register(input: registerAndUpdateCredentialDTO) {
+    return this.http.post(`${this.url}/create`, input).pipe(
       map((data) => {
         return data;
       })
@@ -37,8 +38,8 @@ export class CredentialService {
     );
   }
 
-  update(id: number, params: Object) {
-    return this.http.put(`${this.url}/updateCredential/${id}`, params).pipe(
+  update(id: number, input: registerAndUpdateCredentialDTO) {
+    return this.http.put(`${this.url}/updateCredential/${id}`, input).pipe(
       map((data) => {
         return data;
       })

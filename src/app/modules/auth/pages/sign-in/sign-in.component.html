@@ -18,7 +18,7 @@
       <input id="password" class="singInInput" type="password" placeholder="Insira sua senha" formControlName="password">
 
       <div class="regiterContainer">
-        <button (click)="authenticate()">Entre</button>
+        <button type="submit" (click)="authenticate()" [disabled]="!form.valid">Entre</button>
         <p class="register">Ainda não tem uma conta? <a routerLink="/auth/sign-up">Cadastre-se</a> </p>
       </div>
 
