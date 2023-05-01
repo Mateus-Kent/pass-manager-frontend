@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './pages/list/list.component';
+import { RegisterPasswordComponent } from './pages/register-password/register-password.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     path: 'list',
     component: ListComponent,
   },
+  {
+    path: 'register',
+    component: RegisterPasswordComponent
+  }
 ];
 
 @NgModule({

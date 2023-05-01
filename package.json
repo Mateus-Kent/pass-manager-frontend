@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start-pwa": "ng build && http-server -p 8080 -c-1 dist/pass-manager-web",
+    "dev": "ng serve",
     "ng": "ng",
     "start": "ng serve --disable-host-check",
     "build": "ng build",
