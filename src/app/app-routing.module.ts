@@ -19,6 +19,13 @@ const routes: Routes = [
         (m) => m.CredentialModule
       ),
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./modules/user/user.module').then(
+        (m) => m.UserModule
+      ),
+  }
 ];
 
 @NgModule({
