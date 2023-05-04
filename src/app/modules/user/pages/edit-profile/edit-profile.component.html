@@ -13,25 +13,41 @@
   <main>
     <h1>Editar meu perfil</h1>
 
-    <form>
+    <form [formGroup]="form">
       <div class="inputContainer">
         <label>Email:</label>
-        <input placeholder="fulanodetal@gmail.com" type="text" />
+        <input
+          placeholder="fulanodetal@gmail.com"
+          type="text"
+          formControlName="email"
+        />
       </div>
 
       <div class="inputContainer">
         <label>Usuário:</label>
-        <input placeholder="fulanodetal" type="text" />
+        <input
+          placeholder="fulanodetal"
+          type="text"
+          formControlName="username"
+        />
       </div>
 
       <div class="inputContainer">
         <label>Senha:</label>
-        <input placeholder="*******" type="password" />
+        <input
+          placeholder="*******"
+          type="password"
+          formControlName="password"
+        />
       </div>
 
       <div class="inputContainer">
         <label>Confirmar senha:</label>
-        <input placeholder="*******" type="password" />
+        <input
+          placeholder="*******"
+          type="password"
+          formControlName="confirm"
+        />
       </div>
 
       <div class="buttonContainer">

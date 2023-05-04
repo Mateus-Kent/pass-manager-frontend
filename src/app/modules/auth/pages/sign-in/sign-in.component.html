@@ -1,7 +1,6 @@
 <div class="container">
-
   <header>
-    <img src="/assets/imgs/logo.png" alt="Logo">
+    <img src="/assets/imgs/logo.png" alt="Logo" />
     <h2>Pass Manager</h2>
   </header>
 
@@ -10,18 +9,30 @@
     <p class="insertData">Por favor Insira seus dados.</p>
 
     <form [formGroup]="form">
-
       <label for="email">Email:</label>
-      <input id="email" class="singInInput" type="text" placeholder="Insira seu email"  formControlName="email">
+      <input
+        id="email"
+        class="singInInput"
+        type="text"
+        placeholder="Insira seu email"
+        formControlName="email"
+      />
 
       <label for="password">Senha:</label>
-      <input id="password" class="singInInput" type="password" placeholder="Insira sua senha" formControlName="password">
+      <input
+        id="password"
+        class="singInInput"
+        type="password"
+        placeholder="Insira sua senha"
+        formControlName="password"
+      />
 
       <div class="regiterContainer">
         <button type="submit" (click)="authenticate()">Entre</button>
-        <p class="register">Ainda não tem uma conta? <a routerLink="/auth/sign-up">Cadastre-se</a> </p>
+        <p class="register">
+          Ainda não tem uma conta? <a routerLink="/auth/sign-up">Cadastre-se</a>
+        </p>
       </div>
-
     </form>
   </main>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environments';
+import { UpdateUserDTO } from '../DTOs/updateUserDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class UserService {
     );
   }
 
-  update(id: number, params: Object) {
-    return this.http.put(`${this.url}/update/${id}`, params).pipe(
+  update(id: number, input: UpdateUserDTO) {
+    return this.http.put(`${this.url}/update/${id}`, input).pipe(
       map((data) => {
         return data;
       })

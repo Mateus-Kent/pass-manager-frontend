@@ -5,17 +5,14 @@ import { CredentialRoutingModule } from './credential-routing.module';
 import { ListComponent } from './pages/list/list.component';
 import { RegisterPasswordComponent } from './pages/register-password/register-password.component';
 import { EditCredentialComponent } from './pages/edit-credential/edit-credential.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
     ListComponent,
     RegisterPasswordComponent,
-    EditCredentialComponent
+    EditCredentialComponent,
   ],
-  imports: [
-    CommonModule,
-    CredentialRoutingModule
-  ]
+  imports: [CommonModule, CredentialRoutingModule, SharedModule],
 })
-export class CredentialModule { }
+export class CredentialModule {}
