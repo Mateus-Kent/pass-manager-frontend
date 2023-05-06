@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { InputErrorComponent } from './components/input-error/input-error.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
-  declarations: [
-    InputErrorComponent
-  ],
+  declarations: [InputErrorComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -15,6 +14,7 @@ import { InputErrorComponent } from './components/input-error/input-error.compon
     NgxMaskDirective,
     NgxMaskPipe,
   ],
+  providers: [AuthGuard],
   exports: [FormsModule, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
 })
 export class SharedModule {}

@@ -1,8 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { registerAndUpdateCredentialDTO } from '../DTOs/registerAndUpdateCredentialDTO';
+import { Credential } from '../models/Credential';
+
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +13,7 @@ import { registerAndUpdateCredentialDTO } from '../DTOs/registerAndUpdateCredent
 export class CredentialService {
   url: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
     this.url = `${environment.url}/credentials`;
   }
 
@@ -23,7 +26,7 @@ export class CredentialService {
   }
 
   obtain(id: number) {
-    return this.http.get(`${this.url}/getCredential/${id}`).pipe(
+    return this.http.get<Credential>(`${this.url}/getCredential/${id}`).pipe(
       map((data) => {
         return data;
       })
@@ -31,7 +34,7 @@ export class CredentialService {
   }
 
   list() {
-    return this.http.get(`${this.url}/getCredentials`).pipe(
+    return this.http.get<Credential[]>(`${this.url}/getCredentials`).pipe(
       map((data) => {
         return data;
       })

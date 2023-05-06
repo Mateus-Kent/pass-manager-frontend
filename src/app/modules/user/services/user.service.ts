@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { UpdateUserDTO } from '../DTOs/updateUserDTO';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class UserService {
   }
 
   obtain(id: number) {
-    return this.http.get(`${this.url}/getUser/${id}`).pipe(
+    return this.http.get<User>(`${this.url}/getUser/${id}`).pipe(
       map((data) => {
         return data;
       })

@@ -32,28 +32,11 @@
         />
       </div>
 
-      <div class="inputContainer">
-        <label>Senha:</label>
-        <input
-          placeholder="*******"
-          type="password"
-          formControlName="password"
-        />
-      </div>
-
-      <div class="inputContainer">
-        <label>Confirmar senha:</label>
-        <input
-          placeholder="*******"
-          type="password"
-          formControlName="confirm"
-        />
-      </div>
 
       <div class="buttonContainer">
-        <button class="delete">Excluir conta</button>
+        <button (click)="(deleteUser())" class="delete">Excluir conta</button>
 
-        <button class="save">Salvar</button>
+        <button (click)="(updateUser())" class="save">Salvar</button>
       </div>
     </form>
   </main>

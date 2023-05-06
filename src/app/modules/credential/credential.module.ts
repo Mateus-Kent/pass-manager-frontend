@@ -6,6 +6,8 @@ import { ListComponent } from './pages/list/list.component';
 import { RegisterPasswordComponent } from './pages/register-password/register-password.component';
 import { EditCredentialComponent } from './pages/edit-credential/edit-credential.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthModule } from '../auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RegisterPasswordComponent,
     EditCredentialComponent,
   ],
-  imports: [CommonModule, CredentialRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    CredentialRoutingModule,
+    SharedModule,
+    AuthModule,
+    HttpClientModule,
+  ],
 })
 export class CredentialModule {}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CredentialService } from '../../services/credential.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-password',
@@ -9,7 +11,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class RegisterPasswordComponent implements OnInit {
   form!: FormGroup;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private credentialService: CredentialService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -22,6 +27,13 @@ export class RegisterPasswordComponent implements OnInit {
       credentialPassword: new FormControl(null, []),
       websiteName: new FormControl(null, []),
       websiteUrl: new FormControl(null, []),
+    });
+  }
+
+  createCredential() {
+    const input = this.form.getRawValue();
+    this.credentialService.register(input).subscribe((data) => {
+      this.router.navigate(['/credential/list']);
     });
   }
 }

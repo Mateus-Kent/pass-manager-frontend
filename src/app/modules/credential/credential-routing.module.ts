@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './pages/list/list.component';
 import { RegisterPasswordComponent } from './pages/register-password/register-password.component';
 import { EditCredentialComponent } from './pages/edit-credential/edit-credential.component';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,14 +14,17 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
     component: RegisterPasswordComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'edit/1',
+    path: 'edit/:id',
     component: EditCredentialComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

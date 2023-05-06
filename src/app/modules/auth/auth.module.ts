@@ -9,8 +9,6 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 @NgModule({
   declarations: [SignUpComponent, SignInComponent],
   imports: [CommonModule, AuthRoutingModule, SharedModule],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthModule {}

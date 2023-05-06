@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { passwordValidator } from 'src/app/validators/passwordValidator';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +12,7 @@ import { passwordValidator } from 'src/app/validators/passwordValidator';
 export class SignInComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.initForm();
@@ -25,6 +26,9 @@ export class SignInComponent implements OnInit {
   }
 
   authenticate() {
-    this.router.navigate(['/credential/list']);
+    const input = this.form.getRawValue();
+    this.authService.signIn(input).subscribe((data) => {
+      this.router.navigate(['/credential/list']);
+    });
   }
 }

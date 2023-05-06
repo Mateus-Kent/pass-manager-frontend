@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environments';
 import { map } from 'rxjs';
 import { signUpUserDTO } from '../DTOs/signUpUserDTO';
 import { signInUserDTO } from '../DTOs/signInUserDTO';
+import { User } from '../../user/models/User';
+import jwt_decode from 'jwt-decode';
 
 interface AuthResponse {
   username: string;
@@ -41,10 +43,19 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 
   isAuthenticated() {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
+  }
+
+  getToken() {
+    return sessionStorage.getItem('token');
+  }
+
+  getUserIdFromToken() {
+    const decodedToken: any = jwt_decode(sessionStorage.getItem('token')!);
+    return decodedToken.sub.userId;
   }
 }
