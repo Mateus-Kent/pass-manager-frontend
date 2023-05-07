@@ -52,4 +52,13 @@ export class EditCredentialComponent implements OnInit {
       this.router.navigate(['/credential/list']);
     });
   }
+
+  copyText(value: string) {
+    const el = document.createElement('textarea');
+    el.value = value;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
 }
