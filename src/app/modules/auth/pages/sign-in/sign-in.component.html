@@ -18,14 +18,28 @@
         formControlName="email"
       />
 
-      <label for="password">Senha:</label>
-      <input
-        id="password"
-        class="singInInput"
-        type="password"
-        placeholder="Insira sua senha"
-        formControlName="password"
-      />
+      <div class="passwordContainer">
+        <label for="password">Senha:</label>
+        <input
+          id="password"
+          [type]="hide ? 'password' : 'text'"
+          class="singInInput"
+          placeholder="Insira sua senha"
+          formControlName="password"
+        />
+        <button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <img
+            src="{{
+              hide ? '/assets/icons/eye-slash.svg' : '/assets/icons/eye.svg'
+            }}"
+            alt=""
+          />
+        </button>
+      </div>
 
       <div class="regiterContainer">
         <button type="submit" (click)="authenticate()">Entre</button>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { passwordValidator } from 'src/app/validators/passwordValidator';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SignInComponent implements OnInit {
   form!: FormGroup;
+  hide = true;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -27,8 +29,15 @@ export class SignInComponent implements OnInit {
 
   authenticate() {
     const input = this.form.getRawValue();
-    this.authService.signIn(input).subscribe((data) => {
-      this.router.navigate(['/credential/list']);
+    Swal.fire({
+      icon: 'success',
+      title: 'Usuário autenticado com sucesso !!',
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(() => {
+      this.authService.signIn(input).subscribe((data) => {
+        this.router.navigate(['/credential/list']);
+      });
     });
   }
 }

@@ -3,7 +3,6 @@
   flex-direction: column;
   height: 100vh;
 
-
   header {
     width: 100vw;
     height: 124px;
@@ -31,7 +30,6 @@
     .insertData {
       font-size: 1rem;
       color: #999595;
-
     }
 
     form {
@@ -45,7 +43,6 @@
         font-size: 12px;
         font-weight: 600;
         margin-bottom: 4px;
-
       }
 
       .singInInput {
@@ -57,14 +54,33 @@
         border-left: none;
         border-right: none;
         border-bottom: 1px solid #999595;
-
       }
 
       input:focus {
         outline: none;
       }
 
+      .passwordContainer {
+        position: relative;
 
+        button {
+          height: 18px;
+          width: 18px;
+          border: none;
+          color: #000;
+          position: absolute;
+          right: 40px;
+          bottom: 30px;
+          cursor: pointer;
+
+          img {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            z-index: 100000;
+          }
+        }
+      }
 
       .regiterContainer {
         width: 100%;
@@ -76,7 +92,7 @@
           width: 330px;
           height: 42px;
           background-color: #075985;
-          color: #FFFF;
+          color: #ffff;
           border: none;
           border-style: none;
           cursor: pointer;
@@ -94,13 +110,10 @@
           }
         }
       }
-
     }
-
   }
 
   h2 {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
-
 }

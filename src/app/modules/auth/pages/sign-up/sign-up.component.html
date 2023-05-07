@@ -27,14 +27,51 @@
         formControlName="username"
       />
 
-      <label for="password">Senha:</label>
-      <input
-        id="password"
-        class="singInInput"
-        type="password"
-        placeholder="Insira sua senha"
-        formControlName="password"
-      />
+      <div class="passwordContainer">
+        <label for="password">Senha:</label>
+        <input
+          [type]="hide ? 'password' : 'text'"
+          id="password"
+          class="singInInput"
+          placeholder="Insira sua senha"
+          formControlName="password"
+        />
+        <button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <img
+            src="{{
+              hide ? '/assets/icons/eye-slash.svg' : '/assets/icons/eye.svg'
+            }}"
+            alt=""
+          />
+        </button>
+      </div>
+
+      <div class="passwordContainer">
+        <label for="confirm">Confirme sua senha:</label>
+        <input
+          [type]="hide2 ? 'password' : 'text'"
+          id="confirm"
+          class="singInInput"
+          placeholder="Cofirme sua senha"
+          formControlName="confirm"
+        />
+        <button
+          (click)="hide2 = !hide2"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide2"
+        >
+          <img
+            src="{{
+              hide2 ? '/assets/icons/eye-slash.svg' : '/assets/icons/eye.svg'
+            }}"
+            alt=""
+          />
+        </button>
+      </div>
 
       <div class="regiterContainer">
         <button (click)="register()">Entre</button>
