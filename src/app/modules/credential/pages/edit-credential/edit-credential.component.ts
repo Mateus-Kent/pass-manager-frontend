@@ -31,9 +31,9 @@ export class EditCredentialComponent implements OnInit {
       this.form.patchValue({
         emailCredential: data.emailCredential,
         usernameCredential: data.usernameCredential,
-        credentialPassword: data.usernameCredential,
-        websiteName: data.usernameCredential,
-        websiteUrl: data.usernameCredential,
+        credentialPassword: data.credentialPassword,
+        websiteName: data.websiteName,
+        websiteUrl: data.websiteUrl,
       });
     });
   }
@@ -72,35 +72,30 @@ export class EditCredentialComponent implements OnInit {
     );
   }
 
-  deleteCredential() {
-    this.credentialService.delete(this.id).subscribe(
-      (response) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Senha deletada com sucesso !!',
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          this.router.navigate(['/credential/list']);
-        });
-      },
-      (error) => {
-        console.error(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error.error.error,
-        });
-      }
-    );
+  async deleteCredential(credential: Credential) {
+    const { value: accept } = await Swal.fire({
+      title: 'Excluir Senha',
+      text: `Tem certeza que deseja excluir a senha para: ${credential.websiteName}`,
+      icon: 'warning',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Sim',
+      denyButtonText: `Não`,
+    });
+    if (!accept) return;
+    this.credentialService.delete(this.id).subscribe((data: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Senha deletada com sucesso !!',
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        this.router.navigate(['/credential/list']);
+      });
+    });
   }
 
   copyText(value: string) {
-    const el = document.createElement('textarea');
-    el.value = value;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+    navigator.clipboard.writeText(value);
   }
 }

@@ -17,7 +17,7 @@
       <div class="inputContainer">
         <label>Email:</label>
         <input
-          placeholder="fulanodetal@gmail.com"
+          placeholder="{{ user.email }}"
           type="text"
           formControlName="email"
         />
@@ -35,7 +35,7 @@
       <div class="inputContainer">
         <label>Usuário:</label>
         <input
-          placeholder="fulanodetal"
+          placeholder="{{ user.username }}"
           type="text"
           formControlName="username"
         />
@@ -51,7 +51,7 @@
       </div>
 
       <div class="buttonContainer">
-        <button (click)="deleteUser()" class="delete">Excluir conta</button>
+        <button (click)="deleteUser(user)" class="delete">Excluir conta</button>
 
         <button (click)="updateUser()" class="save">Salvar</button>
       </div>

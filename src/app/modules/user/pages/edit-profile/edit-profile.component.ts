@@ -43,8 +43,18 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  deleteUser() {
-    this.userService.delete(this.id).subscribe(() => {
+  async deleteUser(user: User) {
+    const { value: accept } = await Swal.fire({
+      title: 'Exclusão de perfil',
+      text: `Tem certeza que deseja excluir seu perfil, ${user.username} ?`,
+      icon: 'warning',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Sim',
+      denyButtonText: `Não`,
+    });
+    if (!accept) return;
+    this.userService.delete(this.id).subscribe((data: any) => {
       Swal.fire({
         icon: 'success',
         title: 'usuário deletado com sucesso !!',
