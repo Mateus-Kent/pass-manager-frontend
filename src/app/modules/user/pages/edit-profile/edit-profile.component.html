@@ -13,7 +13,7 @@
   <main>
     <h1>Editar meu perfil</h1>
 
-    <form [formGroup]="form">
+    <form *ngIf="user" [formGroup]="form">
       <div class="inputContainer">
         <label>Email:</label>
         <input
