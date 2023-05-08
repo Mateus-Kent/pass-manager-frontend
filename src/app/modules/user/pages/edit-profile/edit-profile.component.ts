@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/User';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-profile',
@@ -37,23 +38,44 @@ export class EditProfileComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      username: new FormControl(null, []),
-      email: new FormControl(null, []),
+      username: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.email]),
     });
   }
 
   deleteUser() {
     this.userService.delete(this.id).subscribe(() => {
-      alert('Usuário deletado com sucesso !!');
-      this.authService.logout();
-      this.router.navigate(['/auth/sign-in']);
+      Swal.fire({
+        icon: 'success',
+        title: 'usuário deletado com sucesso !!',
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        this.authService.logout();
+        this.router.navigate(['/auth/sign-in']);
+      });
     });
   }
 
   updateUser() {
     const input = this.form.getRawValue();
-    this.userService.update(this.id, input).subscribe((data) => {
-      alert('Usuário atualizado com sucesso !!');
-    });
+    this.userService.update(this.id, input).subscribe(
+      (data) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'usuário atualizado com sucesso !!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      }
+    );
   }
 }

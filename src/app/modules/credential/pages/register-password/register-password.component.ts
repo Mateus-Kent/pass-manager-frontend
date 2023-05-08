@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CredentialService } from '../../services/credential.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-password',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPasswordComponent implements OnInit {
   form!: FormGroup;
+  hide = true;
 
   constructor(
     private router: Router,
@@ -24,7 +26,7 @@ export class RegisterPasswordComponent implements OnInit {
     this.form = new FormGroup({
       emailCredential: new FormControl(null, []),
       usernameCredential: new FormControl(null, []),
-      credentialPassword: new FormControl(null, []),
+      credentialPassword: new FormControl(null, [Validators.required]),
       websiteName: new FormControl(null, []),
       websiteUrl: new FormControl(null, []),
     });
@@ -32,8 +34,25 @@ export class RegisterPasswordComponent implements OnInit {
 
   createCredential() {
     const input = this.form.getRawValue();
-    this.credentialService.register(input).subscribe((data) => {
-      this.router.navigate(['/credential/list']);
-    });
+    this.credentialService.register(input).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Senha salva com sucesso !!',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          this.router.navigate(['/credential/list']);
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      }
+    );
   }
 }

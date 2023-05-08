@@ -9,14 +9,28 @@
     <p class="insertData">Por favor Insira seus dados.</p>
 
     <form [formGroup]="form">
-      <label for="email">Email:</label>
-      <input
-        id="email"
-        class="singInInput"
-        type="text"
-        placeholder="Insira seu email"
-        formControlName="email"
-      />
+      <div class="inputContainer">
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          class="singInInput"
+          type="text"
+          placeholder="Insira seu email"
+          formControlName="email"
+        />
+      </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['email'].invalid &&
+          (form.controls['email'].dirty || form.controls['email'].touched)
+        "
+      >
+        <span
+          >O campo email é obrigatório e necessário <br />
+          que seja um email existente</span
+        >
+      </div>
 
       <div class="passwordContainer">
         <label for="password">Senha:</label>
@@ -39,6 +53,15 @@
             alt=""
           />
         </button>
+      </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['password'].invalid &&
+          (form.controls['password'].dirty || form.controls['password'].touched)
+        "
+      >
+        <span>O campo senha é obrigatório</span>
       </div>
 
       <div class="regiterContainer">

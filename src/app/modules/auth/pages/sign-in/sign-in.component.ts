@@ -29,15 +29,26 @@ export class SignInComponent implements OnInit {
 
   authenticate() {
     const input = this.form.getRawValue();
-    Swal.fire({
-      icon: 'success',
-      title: 'Usuário autenticado com sucesso !!',
-      showConfirmButton: false,
-      timer: 1500,
-    }).then(() => {
-      this.authService.signIn(input).subscribe((data) => {
-        this.router.navigate(['/credential/list']);
-      });
-    });
+
+    this.authService.signIn(input).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Usuário autenticado com sucesso !!',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          this.router.navigate(['/credential/list']);
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      }
+    );
   }
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { CredentialService } from '../../services/credential.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Credential } from '../../models/Credential';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-credential',
@@ -13,6 +14,7 @@ export class EditCredentialComponent implements OnInit {
   form!: FormGroup;
   id: number;
   credential!: Credential;
+  hide = true;
 
   constructor(
     private router: Router,
@@ -48,9 +50,49 @@ export class EditCredentialComponent implements OnInit {
 
   updateCredential() {
     const input = this.form.getRawValue();
-    this.credentialService.update(this.id, input).subscribe((data) => {
-      this.router.navigate(['/credential/list']);
-    });
+    this.credentialService.update(this.id, input).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Senha atualizada com sucesso !!',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          this.router.navigate(['/credential/list']);
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      }
+    );
+  }
+
+  deleteCredential() {
+    this.credentialService.delete(this.id).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Senha deletada com sucesso !!',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          this.router.navigate(['/credential/list']);
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      }
+    );
   }
 
   copyText(value: string) {

@@ -22,6 +22,15 @@
           formControlName="email"
         />
       </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['email'].invalid &&
+          (form.controls['email'].dirty || form.controls['email'].touched)
+        "
+      >
+        <span>O campo email é obrigatório</span>
+      </div>
 
       <div class="inputContainer">
         <label>Usuário:</label>
@@ -31,12 +40,20 @@
           formControlName="username"
         />
       </div>
-
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['username'].invalid &&
+          (form.controls['username'].dirty || form.controls['username'].touched)
+        "
+      >
+        <span>O campo usuário é obrigatório</span>
+      </div>
 
       <div class="buttonContainer">
-        <button (click)="(deleteUser())" class="delete">Excluir conta</button>
+        <button (click)="deleteUser()" class="delete">Excluir conta</button>
 
-        <button (click)="(updateUser())" class="save">Salvar</button>
+        <button (click)="updateUser()" class="save">Salvar</button>
       </div>
     </form>
   </main>

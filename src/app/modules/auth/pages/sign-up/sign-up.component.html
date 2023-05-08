@@ -9,23 +9,48 @@
     <p class="insertData">Complete seus dados para cadastrar-se</p>
 
     <form [formGroup]="form">
-      <label for="email">Email:</label>
-      <input
-        id="email"
-        class="singInInput"
-        type="text"
-        placeholder="Insira seu email"
-        formControlName="email"
-      />
+      <div class="inputContainer">
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          class="singInInput"
+          type="text"
+          placeholder="Insira seu email"
+          formControlName="email"
+        />
+      </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['email'].invalid &&
+          (form.controls['email'].dirty || form.controls['email'].touched)
+        "
+      >
+        <span
+          >O campo email é obrigatório e necessário <br />
+          que seja um email existente</span
+        >
+      </div>
 
-      <label for="username">Usuário:</label>
-      <input
-        id="username"
-        class="singInInput"
-        type="text"
-        placeholder="Insira seu nome de usuário"
-        formControlName="username"
-      />
+      <div class="inputContainer">
+        <label for="username">Usuário:</label>
+        <input
+          id="username"
+          class="singInInput"
+          type="text"
+          placeholder="Insira seu nome de usuário"
+          formControlName="username"
+        />
+      </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['username'].invalid &&
+          (form.controls['username'].dirty || form.controls['username'].touched)
+        "
+      >
+        <span>O campo Usuário é obrigatório</span>
+      </div>
 
       <div class="passwordContainer">
         <label for="password">Senha:</label>
@@ -49,6 +74,19 @@
           />
         </button>
       </div>
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['password'].invalid &&
+          (form.controls['password'].dirty || form.controls['password'].touched)
+        "
+      >
+        <span
+          >A senha tem que ter no minimo 6 caracteres e que ter <br />no minimo
+          uma letra minúscula, uma letra maiúscula <br />
+          e um caracter especial</span
+        >
+      </div>
 
       <div class="passwordContainer">
         <label for="confirm">Confirme sua senha:</label>
@@ -71,6 +109,16 @@
             alt=""
           />
         </button>
+      </div>
+
+      <div
+        class="erroCase"
+        *ngIf="
+          form.controls['confirm'].invalid &&
+          (form.controls['confirm'].dirty || form.controls['confirm'].touched)
+        "
+      >
+        <span>É obrigatorio confirmar a senha corretamente</span>
       </div>
 
       <div class="regiterContainer">

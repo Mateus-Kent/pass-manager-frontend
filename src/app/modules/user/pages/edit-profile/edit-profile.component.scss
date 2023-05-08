@@ -6,7 +6,7 @@
   position: relative;
   position: relative;
 
-  header{
+  header {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
@@ -55,7 +55,7 @@
           color: #676464;
         }
 
-        input{
+        input {
           width: 330px;
           height: 42px;
           border: #B1B1B1 1px solid;
@@ -68,7 +68,7 @@
           box-shadow: 0 0 0 0;
           border: #000 1px solid;
           outline: 0;
-      }
+        }
 
       }
 
@@ -108,4 +108,18 @@
 
     }
   }
+}
+
+.erroCase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  span {
+    font-size: 0.750em;
+    display: inline-block;
+    text-align: center;
+  }
+
 }
