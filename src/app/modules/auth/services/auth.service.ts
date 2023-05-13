@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environments';
+import { environment } from 'src/environments/environment';
 import { map } from 'rxjs';
 import { signUpUserDTO } from '../DTOs/signUpUserDTO';
 import { signInUserDTO } from '../DTOs/signInUserDTO';
-import { User } from '../../user/models/User';
 import jwt_decode from 'jwt-decode';
 
 interface AuthResponse {
