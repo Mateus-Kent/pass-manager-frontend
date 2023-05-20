@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { passwordValidator } from 'src/app/validators/passwordValidator';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
-import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -44,11 +43,20 @@ export class SignUpComponent implements OnInit {
     if (password == confirm) {
       const input = { email, username, password };
 
+      Swal.fire({
+        title: 'Carregando...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       this.authService.signUp(input).subscribe(
         (response) => {
+          Swal.close();
           Swal.fire({
             icon: 'success',
-            title: 'Usuário criado com sucesso !!',
+            title: 'Usuário criado com sucesso!',
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {
@@ -56,6 +64,7 @@ export class SignUpComponent implements OnInit {
           });
         },
         (error) => {
+          Swal.close();
           console.error(error);
           Swal.fire({
             icon: 'error',
