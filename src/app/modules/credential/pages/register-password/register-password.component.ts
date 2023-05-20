@@ -34,8 +34,18 @@ export class RegisterPasswordComponent implements OnInit {
 
   createCredential() {
     const input = this.form.getRawValue();
+
+    Swal.fire({
+      title: 'Carregando...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     this.credentialService.register(input).subscribe(
       (response) => {
+        Swal.close();
         Swal.fire({
           icon: 'success',
           title: 'Senha salva com sucesso !!',

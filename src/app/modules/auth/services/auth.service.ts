@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { signUpUserDTO } from '../DTOs/signUpUserDTO';
 import { signInUserDTO } from '../DTOs/signInUserDTO';
 import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 interface AuthResponse {
   username: string;
@@ -19,7 +20,7 @@ interface AuthResponse {
 export class AuthService {
   url: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.url = `${environment.url}/users`;
   }
 
@@ -43,6 +44,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('token');
+    this.router.navigate(['/auth/sign-in']);
   }
 
   isAuthenticated() {

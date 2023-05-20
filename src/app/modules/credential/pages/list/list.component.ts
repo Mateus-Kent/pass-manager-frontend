@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
   userId!: number;
 
   constructor(
-    private router: Router,
     private credentialService: CredentialService,
     private authService: AuthService
   ) {}
@@ -29,5 +28,14 @@ export class ListComponent implements OnInit {
     this.credentialService.list().subscribe((data: any) => {
       this.credentialList = data;
     });
+  }
+
+  toggleDropdown() {
+    var dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownMenu?.classList.toggle('show');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

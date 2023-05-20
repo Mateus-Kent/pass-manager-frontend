@@ -30,8 +30,17 @@ export class SignInComponent implements OnInit {
   authenticate() {
     const input = this.form.getRawValue();
 
+    Swal.fire({
+      title: 'Carregando...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     this.authService.signIn(input).subscribe(
       (response) => {
+        Swal.close();
         Swal.fire({
           icon: 'success',
           title: 'Usuário autenticado com sucesso !!',

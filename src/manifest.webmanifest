@@ -1,9 +1,9 @@
 {
-  "name": "pass-manager-web",
-  "short_name": "pass-manager-web",
+  "name": "pass-manager",
+  "short_name": "pass-manager",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
   "icons": [

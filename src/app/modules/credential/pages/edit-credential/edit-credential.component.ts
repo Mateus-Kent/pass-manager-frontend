@@ -50,8 +50,18 @@ export class EditCredentialComponent implements OnInit {
 
   updateCredential() {
     const input = this.form.getRawValue();
+
+    Swal.fire({
+      title: 'Carregando...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     this.credentialService.update(this.id, input).subscribe(
       (response) => {
+        Swal.close();
         Swal.fire({
           icon: 'success',
           title: 'Senha atualizada com sucesso !!',
