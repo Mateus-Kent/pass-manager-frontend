@@ -1,27 +1,52 @@
+![Pass Manager Logo](src/assets/imgs/Pass_manager_logo.png)
+
 # Pass Manager Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+This repository contains the source code of PWA application for a password manager Frontend built using [Angular](https://angular.io/)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 💻 Layout
+![App Layout](src/assets/imgs/app_layout_apressentation.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 👨‍💻 This project was developed with the following technologies:
 
-## Build
+### Angular 
+Angular is an application-design framework and development platform for creating efficient and sophisticated single-page apps.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To use this API, you must have `Node.js` and `Angular CLI` 
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To install this API, follow these steps:
 
-## Further help
+1. Clone the repository:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone https://github.com/Mateus-Kent/pass-manager-frontend.git
+```
+
+2. Navigate to the repository directory:
+
+```bash
+cd pass-manager-frontend
+```
+
+3. Install the dependencies:
+```bash
+npm install
+```
+### Running the app
+
+To run the API, follow this step:
+
+1. You can Run this command 
+```bash
+npm start-pwa 
+```
+
+
+This project was made for the delivery of the interdisciplinary project of the FECAP faculty in the field of analysis and development of systems
