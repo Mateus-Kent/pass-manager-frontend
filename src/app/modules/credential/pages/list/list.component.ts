@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
   credentialList: Credential[] = [];
   userId!: number;
+  dropdownOpen: boolean = false;
 
   constructor(
     private credentialService: CredentialService,
@@ -31,8 +32,7 @@ export class ListComponent implements OnInit {
   }
 
   toggleDropdown() {
-    var dropdownMenu = document.getElementById('dropdownMenu');
-    dropdownMenu?.classList.toggle('show');
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
   logout() {
